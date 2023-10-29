@@ -10,5 +10,8 @@
     "notion"
   ],
   "author": "Hiroyuki Kuromiya",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "typescript": "^5.2.2"
+  }
 }

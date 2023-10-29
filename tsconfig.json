@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "target": "es2016",
+    "module": "commonjs",
+    "declaration": true, // ← 追記（コンパイルしたtsファイルの中でexportしているもの全ての型定義ファイルを出力する）
+    "sourceMap": true, // ← 追記（ソースマップを出力する）
+    "outDir": "./dist", // ← 追記（コンパイル結果の出力先を指定）
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "skipLibCheck": true
+  },
+  "include": [
+    "src/**/*.ts"
+  ] // ← 追記（コンパイルする対象ファイルの場所を指定）
+}
