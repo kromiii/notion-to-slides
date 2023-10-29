@@ -1,0 +1,14 @@
+{
+  "name": "notion-to-slides",
+  "version": "1.0.0",
+  "description": "Convert notion page to pdf slides",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "notion"
+  ],
+  "author": "Hiroyuki Kuromiya",
+  "license": "MIT"
+}
