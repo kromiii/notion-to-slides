@@ -13,7 +13,7 @@ A simple npm script to convert a Notion page to a Marp Slides presentation.
 ### 2. Set the notion token to the environment variable
 
 ```bash
-$ export NOTION_TOKENß=[your notion token]
+$ export NOTION_TOKEN=[your notion token]
 ```
 
 ### 3. Install and run the script
