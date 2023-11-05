@@ -20,6 +20,7 @@
     "@notionhq/client": "^2.2.13",
     "@types/node": "^20.8.9",
     "notion-to-md": "^3.1.1",
+    "opener": "^1.5.2",
     "typescript": "^5.2.2"
   }
 }
