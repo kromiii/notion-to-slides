@@ -19,8 +19,7 @@ $ export NOTION_TOKEN=[your notion token]
 ### 3. Install and run the script
 
 ```bash
-$ npm i @kromiii/notion-to-slides
-$ npx notion-to-slides --url [your notion page url] --theme [marp theme]
+$ npx @kromiii/notion-to-slides --url [your notion page url] --theme [marp theme]
 ```
 
 ### 4. Check and export the slides as pdf
