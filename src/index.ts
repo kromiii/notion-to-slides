@@ -7,7 +7,6 @@ const opener = require('opener');
 const pageId = getPageId();
 (async () => {
   const mdString = await notion2md(pageId);
-  console.log(mdString);
-  md2slides(mdString);
-  opener('example.html');
+  const tmpFilePath = md2slides(mdString);
+  opener(tmpFilePath);
 })();

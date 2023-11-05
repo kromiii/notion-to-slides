@@ -1,29 +1,9 @@
 import { Marp } from '@marp-team/marp-core'
 import fs from 'fs'
+import { tmpdir } from 'os'
 
-export default function md2slides(md: string): void {
+export default function md2slides(md: string): string {
   const marpit = new Marp()
-  // const theme = `
-  // /* @theme example */
-
-  // section {
-  //   background-color: #369;
-  //   color: #fff;
-  //   font-size: 30px;
-  //   padding: 40px;
-  // }
-
-  // h1,
-  // h2 {
-  //   text-align: center;
-  //   margin: 0;
-  // }
-
-  // h1 {
-  //   color: #8cf;
-  // }
-  // `
-  // marpit.themeSet.default = marpit.themeSet.add(theme)
 
   const prefix = `
   <!--
@@ -39,5 +19,8 @@ headingDivider: 2
   ${html}
 </body></html>
 `
-  fs.writeFileSync('example.html', htmlFile.trim())
+  const hash = Math.random().toString(32).substring(2)
+  const tmpFilePath = tmpdir() + `/${hash}.html`
+  fs.writeFileSync(tmpFilePath, htmlFile.trim())
+  return tmpFilePath
 }
