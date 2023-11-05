@@ -4,7 +4,7 @@ A simple npm script to convert a Notion page to a Marp Slides presentation.
 
 H1 and H2 Heading in the notion page will be used as the slide title, and the rest of the content will be used as the slide body.
 
-The sample notion page is [here](https://www.notion.so/khiroyuki1993/CTOA-LT-4-c2769d7bc90a4f428adae7a2192d258a) and the converted slides are [here](https://www.docswell.com/s/kromiii/ZP9JW2-2023-10-24-213756).
+The sample notion page is [here](https://khiroyuki1993.notion.site/CTOA-LT-4-c2769d7bc90a4f428adae7a2192d258a?pvs=4) and the converted slides are [here](https://www.docswell.com/s/kromiii/ZP9JW2-2023-10-24-213756).
 
 ## Usage
 
@@ -37,7 +37,7 @@ Once the script is finished, it will open the browser with the slides. You can c
 ## Example
 
 ```bash
-$ npx notion-to-slides --url https://www.notion.so/khiroyuki1993/R-Github-Repository-041ce04de0874cc8bb116d525c69cf7b --theme uncover
+$ npx notion-to-slides --url https://www.notion.so/khiroyuki1993/CTOA-LT-4-c2769d7bc90a4f428adae7a2192d258a --theme uncover
 ```
 
 ## Options
