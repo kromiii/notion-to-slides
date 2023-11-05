@@ -1,13 +1,12 @@
 import { Marp } from '@marp-team/marp-core'
-import fs from 'fs'
-import { tmpdir } from 'os'
 
-export default function md2slides(md: string): string {
+export default function md2slides(md: string, theme: string): string {
   const marpit = new Marp()
 
   const prefix = `
   <!--
 headingDivider: 2
+theme: ${theme}
 -->
   `
   const mdstring = prefix + md
@@ -19,8 +18,5 @@ headingDivider: 2
   ${html}
 </body></html>
 `
-  const hash = Math.random().toString(32).substring(2)
-  const tmpFilePath = tmpdir() + `/${hash}.html`
-  fs.writeFileSync(tmpFilePath, htmlFile.trim())
-  return tmpFilePath
+  return htmlFile.trim()
 }
