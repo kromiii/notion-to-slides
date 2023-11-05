@@ -22,6 +22,10 @@ $ export NOTION_TOKEN=[your notion token]
 $ npx @kromiii/notion-to-slides --url [your notion page url] --theme [marp theme]
 ```
 
+You can change the theme by setting the `--theme` option. The default theme is `default`.
+
+Available themes are: default, uncover, and gaia. See [Marp Core Themes](https://github.com/marp-team/marp-core/tree/main/themes) for more details.
+
 ### 4. Check and export the slides as pdf
 
 Once the script is finished, it will open the browser with the slides. You can check the slides by clicking the "Print" button (cmd + P on Mac). Then you can export the slides as pdf.
