@@ -1,6 +1,9 @@
 {
-  "name": "notion-to-slides",
-  "version": "0.1.1",
+  "name": "@kromiii/notion-to-slides",
+  "publishConfig": {
+    "access": "public"
+  },
+  "version": "0.1.2",
   "description": "Convert notion page to pdf slides",
   "main": "dist/index.js",
   "bin": {
