@@ -2,13 +2,17 @@
 
 A simple npm script to convert a Notion page to a Marp Slides presentation.
 
+H1 and H2 Heading in the notion page will be used as the slide title, and the rest of the content will be used as the slide body.
+
+The sample notion page is [here](https://www.notion.so/khiroyuki1993/CTOA-LT-4-c2769d7bc90a4f428adae7a2192d258a) and the converted slides are [here](https://www.docswell.com/s/kromiii/ZP9JW2-2023-10-24-213756).
+
 ## Usage
 
 ### 1. Prepare the notion token
 
 1. Create an [integration token](https://www.notion.so/my-integrations) in Notion
 1. Open the Notion page you want to convert
-1. Add your integration token by connections
+1. Add your integration to the page
 
 ### 2. Set the notion token to the environment variable
 
