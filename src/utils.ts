@@ -1,4 +1,3 @@
-
 export function getPageId(urlstring: string): string {
   const url = new URL(urlstring);
   const pathSegments = url.pathname.split('-');

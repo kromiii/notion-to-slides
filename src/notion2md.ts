@@ -1,16 +1,9 @@
 import { NotionToMarkdown } from 'notion-to-md'
 import { Client } from '@notionhq/client'
 
-export default async function notion2md(pageId: string): Promise<string> {
-  const NOTION_TOKEN: string | undefined = process.env.NOTION_TOKEN;
-
-  if (!NOTION_TOKEN) {
-    console.error('Please provide a NOTION_TOKEN')
-    process.exit(1)
-  }
-
+export default async function notion2md(pageId: string, token: string): Promise<string> {
   const notion = new Client({
-    auth: NOTION_TOKEN
+    auth: token
   })
 
   const n2m = new NotionToMarkdown({
