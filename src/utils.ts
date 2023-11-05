@@ -1,9 +1,10 @@
 
-export function getPageId() {
-  const pageId = process.argv[2];
-  if (!pageId) {
-    console.error('Please provide a pageId')
-    process.exit(1)
-  }
+export function getPageId(urlstring: string): string {
+  const url = new URL(urlstring);
+  const pathSegments = url.pathname.split('-');
+  const pageId = pathSegments[pathSegments.length - 1];
+
+  console.log(`pageId: ${pageId}`);
+
   return pageId;
 }
