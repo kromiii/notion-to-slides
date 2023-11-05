@@ -1,6 +1,6 @@
 {
   "name": "notion-to-slides",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Convert notion page to pdf slides",
   "main": "dist/index.js",
   "bin": {
