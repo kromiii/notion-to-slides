@@ -3,6 +3,9 @@
   "version": "0.1.0",
   "description": "Convert notion page to pdf slides",
   "main": "dist/index.js",
+  "bin": {
+    "notion-to-slides": "dist/index.js"
+  },
   "types": "dist/index.d.ts",
   "scripts": {
     "build": "tsc",
