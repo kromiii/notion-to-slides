@@ -37,7 +37,7 @@ Once the script is finished, it will open the browser with the slides. You can c
 ## Example
 
 ```bash
-$ npx notion-to-slides --url https://www.notion.so/khiroyuki1993/CTOA-LT-4-c2769d7bc90a4f428adae7a2192d258a --theme uncover
+$ npx @kromiii/notion-to-slides --url https://www.notion.so/khiroyuki1993/CTOA-LT-4-c2769d7bc90a4f428adae7a2192d258a --theme uncover
 ```
 
 ## Options
