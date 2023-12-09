@@ -1,10 +1,10 @@
 # notion-to-slides
 
-A simple npm script to convert a Notion page to a Marp Slides presentation.
+A simple npm package to convert a Notion page to a Marp Slides presentation.
 
 H1 and H2 Heading in the notion page will be used as the slide title, and the rest of the content will be used as the slide body.
 
-The sample notion page is [here](https://khiroyuki1993.notion.site/CTOA-LT-4-c2769d7bc90a4f428adae7a2192d258a?pvs=4) and the converted slides are [here](https://www.docswell.com/s/kromiii/ZP9JW2-2023-10-24-213756).
+You can see the usage from [this](https://speakerdeck.com/khiroyuki1993/notion-to-slides-convert-notion-page-to-presentation-slides), which is also created by this package.
 
 ## Usage
 
