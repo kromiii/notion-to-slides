@@ -8,6 +8,10 @@ import http from 'http';
 import { WebSocketServer, WebSocket } from 'ws';
 import { Client } from '@notionhq/client';
 import open from 'open';
+import util from 'util';
+
+// execをプロミス化
+const execPromise = util.promisify(exec);
 
 // HTTPサーバーを作成
 const server = http.createServer();
@@ -57,6 +61,13 @@ const htmlFile = path.join(tempDir, `${pageId}.html`);
 // NotionページをHTMLスライドに変換するコマンド
 const convertNotionToHtml = `node dist/index.js --url ${notionUrl} --theme ${marpTheme}`;
 
+// 日本時間のタイムスタンプを生成する関数
+function getJapanTime() {
+  const now = new Date();
+  const japanTime = new Date(now.getTime() + 9 * 60 * 60 * 1000);
+  return japanTime.toISOString().replace('T', ' ').replace(/\..+/, '') + ' JST';
+}
+
 // HTMLファイルにJavaScriptコードを追加する関数
 function addLiveReloadScript(filePath) {
   const script = `
@@ -77,11 +88,20 @@ function addLiveReloadScript(filePath) {
   }
 }
 
-// NotionページをHTMLに変換し、スライドを更新する関数
-function updateSlides(openTab = false) {
-  console.log('Updating slides...');
-  exec(convertNotionToHtml, (err, stdout, stderr) => {
-    if (err) {
+let currentTask = null;
+let nextTask = null;
+let isProcessing = false;
+
+// タスクを処理する関数
+async function processTask(task) {
+  isProcessing = true;
+  console.log(`Updating slides... Task created at: ${task.timestamp}`);
+  const startTime = Date.now();
+  try {
+    const { stdout, stderr } = await execPromise(task.cmd);
+    const endTime = Date.now();
+    console.log(`Total processing time: ${endTime - startTime} ms`);
+    if (stderr) {
       console.error(`Error: ${stderr}`);
     } else {
       console.log(`Converted: ${stdout}`);
@@ -89,7 +109,7 @@ function updateSlides(openTab = false) {
       if (fs.existsSync(htmlFile)) {
         // HTMLファイルにスクリプトを追加
         addLiveReloadScript(htmlFile);
-        if (openTab) {
+        if (task.openTab) {
           open(htmlFile); // 最初の実行時にタブを開く
         } else {
           // HTMLファイルが変更されたことをシミュレート
@@ -100,7 +120,25 @@ function updateSlides(openTab = false) {
         console.error(`Error: The HTML file ${htmlFile} does not exist.`);
       }
     }
-  });
+  } catch (error) {
+    console.error(`Execution failed: ${error}`);
+  }
+  isProcessing = false;
+  if (nextTask) {
+    const nextTaskToProcess = nextTask;
+    nextTask = null;
+    processTask(nextTaskToProcess); // キューに残っている最新のタスクを処理
+  }
+}
+
+// NotionページをHTMLに変換し、スライドを更新する関数
+function updateSlides(openTab = false) {
+  const task = { cmd: convertNotionToHtml, openTab, timestamp: getJapanTime() };
+  if (isProcessing) {
+    nextTask = task; // 現在のタスクが処理中なら次のタスクとして保存
+  } else {
+    processTask(task); // 現在タスクが処理中でないならすぐに実行
+  }
 }
 
 // 初回実行
@@ -108,21 +146,36 @@ updateSlides(true); // 最初の実行時はタブを開く
 
 // Notionページの最終更新日時を取得する関数
 async function getNotionPageLastEditedTime(pageId) {
-  const page = await notion.pages.retrieve({ page_id: pageId });
-  return new Date(page.last_edited_time);
+  try {
+    const page = await notion.pages.retrieve({ page_id: pageId });
+    return new Date(page.last_edited_time);
+  } catch (error) {
+    console.error('Failed to retrieve Notion page:', error);
+    return null;
+  }
 }
 
 // Notionページの変更をチェックする関数
 async function checkForNotionPageUpdates() {
+  const startCheckTime = Date.now();
+  console.log(`Checking for updates at: ${getJapanTime()}`);
   const lastEditedTime = await getNotionPageLastEditedTime(pageId);
-  if (!global.lastCheckedTime || global.lastCheckedTime < lastEditedTime) {
+  if (lastEditedTime && (!global.lastCheckedTime || global.lastCheckedTime < lastEditedTime)) {
     global.lastCheckedTime = lastEditedTime;
-    updateSlides(); // 以降はopenTabをfalseにして呼び出す
+    updateSlides();
   }
+  const endCheckTime = Date.now();
+  console.log(`Update check took: ${endCheckTime - startCheckTime} ms`);
+  scheduleNextCheck();
 }
 
-// 定期的にNotionページの変更をチェック
-setInterval(checkForNotionPageUpdates, 5000); // 1秒ごとにチェック
+// 次のチェックをスケジュールする関数
+function scheduleNextCheck() {
+  setTimeout(checkForNotionPageUpdates, 5000); // 5秒ごとにチェック
+}
+
+// 定期的にNotionページの変更をチェック（リクエストの間隔を最適化）
+scheduleNextCheck();
 
 // HTMLファイルを監視して変更があればスライドをブラウザに通知
 chokidar.watch(htmlFile).on('change', () => {
