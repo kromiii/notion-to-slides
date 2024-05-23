@@ -21,15 +21,31 @@
   "author": "Hiroyuki Kuromiya",
   "license": "MIT",
   "dependencies": {
+    "@marp-team/marp-cli": "^3.4.0",
     "@marp-team/marp-core": "^3.9.0",
-    "@notionhq/client": "^2.2.13",
+    "@notionhq/client": "^2.2.15",
     "@types/node": "^20.8.9",
+    "assert": "^2.1.0",
+    "buffer": "^6.0.3",
     "notion-to-md": "^3.1.1",
+    "open": "^10.1.0",
     "opener": "^1.5.2",
-    "typescript": "^5.2.2",
+    "os-browserify": "^0.3.0",
+    "path-browserify": "^1.0.1",
+    "process": "^0.11.10",
+    "stream-browserify": "^3.0.0",
+    "stream-http": "^3.2.0",
+    "url": "^0.11.3",
+    "util": "^0.12.5",
+    "ws": "^8.17.0",
     "yargs": "^17.7.2"
   },
   "devDependencies": {
-    "@types/yargs": "^17.0.29"
-  }
+    "@types/yargs": "^17.0.29",
+    "ts-loader": "^9.5.1",
+    "typescript": "^5.4.5",
+    "webpack": "^5.91.0",
+    "webpack-cli": "^5.1.4"
+  },
+  "type": "module"
 }
