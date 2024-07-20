@@ -4,7 +4,7 @@ A simple npm package to convert a Notion page to a Marp Slides presentation.
 
 H1 and H2 Heading in the notion page will be used as the slide title, and the rest of the content will be used as the slide body.
 
-You can see the usage from [getting started slides](https://speakerdeck.com/khiroyuki1993/notion-to-slides-convert-notion-page-to-presentation-slides), which is also created by this package.
+You can see the usage from [getting started slides](https://speakerdeck.com/khiroyuki1993/notion-to-slides-convert-notion-page-to-presentation-slides), which is also created by this package. The original notion page is [here](https://khiroyuki1993.notion.site/notion-to-slides-451e4062f4644dbab60f4848cb35cb87).
 
 ## Usage
 
