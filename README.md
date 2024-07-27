@@ -52,8 +52,7 @@ $ npx @kromiii/notion-to-slides --url https://www.notion.so/khiroyuki1993/CTOA-L
 ```bash
 $ git clone
 $ npm i
-$ npm run build
-$ node dist/index.js --url [your notion page url] --theme [marp theme]
+$ npm run start [your notion page url]
 ```
 
 ## License
