@@ -13,7 +13,8 @@
   "scripts": {
     "build": "tsc",
     "prepare": "npm run build",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "npm run build && node dist/index.js --url"
   },
   "keywords": [
     "notion"
@@ -24,12 +25,14 @@
     "@marp-team/marp-core": "^3.9.0",
     "@notionhq/client": "^2.2.13",
     "@types/node": "^20.8.9",
+    "express": "^4.19.2",
     "notion-to-md": "^3.1.1",
     "opener": "^1.5.2",
     "typescript": "^5.2.2",
     "yargs": "^17.7.2"
   },
   "devDependencies": {
+    "@types/express": "^4.17.21",
     "@types/yargs": "^17.0.29"
   }
 }

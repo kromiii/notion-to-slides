@@ -1,8 +1,7 @@
 #!/usr/bin/env node
 
 import yargs from 'yargs'
-import fs from 'fs'
-import { tmpdir } from 'os'
+import express from 'express'; 
 
 import notion2md from './notion2md';
 import md2slides from './md2slides';
@@ -42,13 +41,24 @@ const pageId = getPageId(url);
 const theme = args.theme as string;
 
 // prepare to open the file in the browser
-const opener = require('opener');
+// const opener = require('opener');
 
 // download the page and convert it to markdown slides
 (async () => {
   const mdString = await notion2md(pageId, NOTION_TOKEN);
   const htmlString = md2slides(mdString, theme);
-  const tmpFilePath = tmpdir() + `/${pageId}.html`
-  fs.writeFileSync(tmpFilePath, htmlString)
-  opener(tmpFilePath);
+  // const tmpFilePath = tmpdir() + `/${pageId}.html`
+  // fs.writeFileSync(tmpFilePath, htmlString)
+  // opener(tmpFilePath);
+  
+  const app = express();
+  const port = 8080;
+
+  app.get('/', (req: express.Request, res: express.Response) => {
+    res.send(htmlString);
+  });
+
+  app.listen(port, () => {
+    console.log(`Example app listening at http://localhost:${port}`);
+  });
 })();
