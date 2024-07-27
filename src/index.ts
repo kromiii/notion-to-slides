@@ -1,8 +1,7 @@
 #!/usr/bin/env node
 
 import yargs from 'yargs'
-import fs from 'fs'
-import { tmpdir } from 'os'
+import express from 'express'; 
 
 import notion2md from './notion2md';
 import md2slides from './md2slides';
@@ -42,13 +41,51 @@ const pageId = getPageId(url);
 const theme = args.theme as string;
 
 // prepare to open the file in the browser
-const opener = require('opener');
+// const opener = require('opener');
 
 // download the page and convert it to markdown slides
-(async () => {
+const app = express();
+const port = 8080;
+
+app.get('/', async (req: express.Request, res: express.Response) => {
   const mdString = await notion2md(pageId, NOTION_TOKEN);
   const htmlString = md2slides(mdString, theme);
-  const tmpFilePath = tmpdir() + `/${pageId}.html`
-  fs.writeFileSync(tmpFilePath, htmlString)
-  opener(tmpFilePath);
-})();
+  res.send(`
+    <html>
+    <head>
+      <title>Notion to Slides</title>
+      <script>
+        setInterval(async () => {
+          try {
+            const response = await fetch('/');
+            if (!response.ok) {
+              throw new Error('Network response was not ok');
+            }
+            const newHtmlString = await response.text();
+            if (document.body.innerHTML !== newHtmlString) {
+              document.body.innerHTML = newHtmlString;
+              console.log('Page updated!');
+            }
+          } catch (error) {
+            console.error('Error fetching updates:', error);
+          }
+        }, 5000);
+      </script>
+    </head>
+    <body>
+      ${htmlString}
+    </body>
+    </html>
+  `);
+});
+
+app.listen(port, () => {
+  console.log(`Example app listening at http://localhost:${port}`);
+});
+
+setInterval(async () => {
+  const mdString = await notion2md(pageId, NOTION_TOKEN);
+  const htmlString = md2slides(mdString, theme);
+  // Update the htmlString in memory. 
+  // You might want to use a variable outside the setInterval scope to store this.
+}, 5000); 
