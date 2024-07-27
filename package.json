@@ -14,7 +14,8 @@
     "build": "tsc",
     "prepare": "npm run build",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "npm run build && node dist/index.js --url"
+    "start": "npm run build && node dist/index.js --url",
+    "release": "npm run build && npm publish"
   },
   "keywords": [
     "notion"
