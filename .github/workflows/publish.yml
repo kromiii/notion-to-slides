@@ -1,0 +1,35 @@
+name: Publish Package to npmjs
+on:
+  push:
+    tags:
+      - "v*"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v3
+        with:
+          node-version: "16.x"
+          registry-url: "https://registry.npmjs.org"
+      - name: Config Git
+        run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+      - name: Update version in package.json
+        run: |
+          VERSION=${GITHUB_REF#refs/tags/v}
+          npm version $VERSION --no-git-tag-version
+      - name: Commit package.json changes
+        run: |
+          git add package.json
+          git commit -m "Bump version to ${GITHUB_REF#refs/tags/v}"
+          git push
+      - run: npm ci
+      - run: npm run build
+      - run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
