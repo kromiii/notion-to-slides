@@ -25,9 +25,10 @@ jobs:
           npm version $VERSION --no-git-tag-version
       - name: Commit package.json changes
         run: |
+          git checkout -b temp-branch
           git add package.json
           git commit -m "Bump version to ${GITHUB_REF#refs/tags/v}"
-          git push
+          git push origin HEAD:main
       - run: npm ci
       - run: npm run build
       - run: npm publish
