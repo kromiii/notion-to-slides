@@ -82,10 +82,3 @@ app.get('/', async (req: express.Request, res: express.Response) => {
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
 });
-
-setInterval(async () => {
-  const mdString = await notion2md(pageId, NOTION_TOKEN);
-  const htmlString = md2slides(mdString, theme);
-  // Update the htmlString in memory. 
-  // You might want to use a variable outside the setInterval scope to store this.
-}, 5000); 
