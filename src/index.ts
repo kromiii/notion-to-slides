@@ -23,6 +23,13 @@ const args = yargs
     default: 'default',
     demandOption: false
   })
+.option('port', {
+    alias: 'p',
+    describe: 'The port to use for the server',
+    type: 'number',
+    default: 8080,
+    demandOption: false
+  })
   .help()
   .parseSync()
 
@@ -45,7 +52,8 @@ const theme = args.theme as string;
 
 // download the page and convert it to markdown slides
 const app = express();
-const port = 8080;
+console.debug('args.port', args.port);
+const port = args.port as number;
 
 app.get('/', async (req: express.Request, res: express.Response) => {
   const mdString = await notion2md(pageId, NOTION_TOKEN);

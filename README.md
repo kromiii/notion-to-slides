@@ -28,7 +28,7 @@ $ export NOTION_TOKEN=[your notion token]
 ### 3. Install and run the script
 
 ```bash
-$ npx @kromiii/notion-to-slides --url [your notion page url] --theme [marp theme]
+$ npx @kromiii/notion-to-slides --url [your notion page url] --theme [marp theme] --port [port number]
 ```
 
 You can change the theme by setting the `--theme` option. The default theme is `default`.
@@ -42,7 +42,7 @@ Once the script is finished, it will open the browser with the slides. You can c
 ## Example
 
 ```bash
-$ npx @kromiii/notion-to-slides --url https://www.notion.so/khiroyuki1993/CTOA-LT-4-c2769d7bc90a4f428adae7a2192d258a --theme uncover
+$ npx @kromiii/notion-to-slides --url https://www.notion.so/khiroyuki1993/CTOA-LT-4-c2769d7bc90a4f428adae7a2192d258a --theme uncover --port 8080
 ```
 
 ## Options
@@ -51,13 +51,14 @@ $ npx @kromiii/notion-to-slides --url https://www.notion.so/khiroyuki1993/CTOA-L
 | --- | --- | --- | --- |
 | `--url` | The Notion page URL to convert | | `required` |
 | `--theme` | The Marp theme to use | `default` | `optional` |
+ | `--port` | The port number to use | `8080` | `optional` | 
 
 ## Development
 
 ```bash
 $ git clone
 $ npm i
-$ npm run start [your notion page url]
+$ npm run start [your notion page url] -- --port [port number] -- --theme [marp theme]
 ```
 
 ## License
