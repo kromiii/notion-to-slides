@@ -1,5 +1,7 @@
 # Changelog
 
+## [v0.1.9](https://github.com/kromiii/notion-to-slides/compare/v0.1.8...v0.1.9) - 2024-11-13
+
 ## [v0.1.8](https://github.com/kromiii/notion-to-slides/compare/v0.1.7...v0.1.8) - 2024-11-13
 - Bump cookie and express by @dependabot in https://github.com/kromiii/notion-to-slides/pull/9
 - Add Port Option for Node Server Initialization by @WANZARGEN in https://github.com/kromiii/notion-to-slides/pull/11
