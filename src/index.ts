@@ -52,7 +52,6 @@ const theme = args.theme as string;
 
 // download the page and convert it to markdown slides
 const app = express();
-console.debug('args.port', args.port);
 const port = args.port as number;
 
 app.get('/', async (req: express.Request, res: express.Response) => {
