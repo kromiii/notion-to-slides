@@ -1,5 +1,8 @@
 # Changelog
 
+## [v0.1.12](https://github.com/kromiii/notion-to-slides/compare/v0.1.11...v0.1.12) - 2024-11-17
+- Remove force reload by @kromiii in https://github.com/kromiii/notion-to-slides/pull/17
+
 ## [v0.1.11](https://github.com/kromiii/notion-to-slides/compare/v0.1.10...v0.1.11) - 2024-11-13
 - Remove unnecessary debug logs by @MenxuSeo in https://github.com/kromiii/notion-to-slides/pull/15
 
