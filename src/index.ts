@@ -47,9 +47,6 @@ const pageId = getPageId(url);
 // get the theme from the --theme flag
 const theme = args.theme as string;
 
-// prepare to open the file in the browser
-// const opener = require('opener');
-
 // download the page and convert it to markdown slides
 const app = express();
 const port = args.port as number;
