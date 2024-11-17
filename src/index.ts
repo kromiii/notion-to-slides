@@ -61,23 +61,6 @@ app.get('/', async (req: express.Request, res: express.Response) => {
     <html>
     <head>
       <title>Notion to Slides</title>
-      <script>
-        setInterval(async () => {
-          try {
-            const response = await fetch('/');
-            if (!response.ok) {
-              throw new Error('Network response was not ok');
-            }
-            const newHtmlString = await response.text();
-            if (document.body.innerHTML !== newHtmlString) {
-              document.body.innerHTML = newHtmlString;
-              console.log('Page updated!');
-            }
-          } catch (error) {
-            console.error('Error fetching updates:', error);
-          }
-        }, 5000);
-      </script>
     </head>
     <body>
       ${htmlString}
