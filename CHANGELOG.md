@@ -1,5 +1,9 @@
 # Changelog
 
+## [v0.1.13](https://github.com/kromiii/notion-to-slides/compare/v0.1.12...v0.1.13) - 2024-12-15
+- Bump path-to-regexp and express by @dependabot in https://github.com/kromiii/notion-to-slides/pull/19
+- Bump nanoid from 3.3.6 to 3.3.8 by @dependabot in https://github.com/kromiii/notion-to-slides/pull/21
+
 ## [v0.1.12](https://github.com/kromiii/notion-to-slides/compare/v0.1.11...v0.1.12) - 2024-11-17
 - Remove force reload by @kromiii in https://github.com/kromiii/notion-to-slides/pull/17
 
