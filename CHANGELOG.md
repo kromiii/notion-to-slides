@@ -1,5 +1,8 @@
 # Changelog
 
+## [v0.1.14](https://github.com/kromiii/notion-to-slides/compare/v0.1.13...v0.1.14) - 2025-01-11
+- Bump @marp-team/marp-core from 3.9.0 to 3.9.1 by @dependabot in https://github.com/kromiii/notion-to-slides/pull/22
+
 ## [v0.1.13](https://github.com/kromiii/notion-to-slides/compare/v0.1.12...v0.1.13) - 2024-12-15
 - Bump path-to-regexp and express by @dependabot in https://github.com/kromiii/notion-to-slides/pull/19
 - Bump nanoid from 3.3.6 to 3.3.8 by @dependabot in https://github.com/kromiii/notion-to-slides/pull/21
