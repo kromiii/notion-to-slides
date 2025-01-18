@@ -3,7 +3,7 @@
   "publishConfig": {
     "access": "public"
   },
-  "version": "0.1.14",
+  "version": "0.1.15",
   "description": "Convert notion page to pdf slides",
   "main": "dist/index.js",
   "bin": {
