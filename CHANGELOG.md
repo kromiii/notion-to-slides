@@ -1,5 +1,8 @@
 # Changelog
 
+## [v0.1.15](https://github.com/kromiii/notion-to-slides/compare/v0.1.14...v0.1.15) - 2025-01-18
+- Bump katex from 0.16.10 to 0.16.21 by @dependabot in https://github.com/kromiii/notion-to-slides/pull/24
+
 ## [v0.1.14](https://github.com/kromiii/notion-to-slides/compare/v0.1.13...v0.1.14) - 2025-01-11
 - Bump @marp-team/marp-core from 3.9.0 to 3.9.1 by @dependabot in https://github.com/kromiii/notion-to-slides/pull/22
 
